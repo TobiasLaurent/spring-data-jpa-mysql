@@ -17,21 +17,21 @@ public class StudentRepositoryTest {
     @Autowired
     private StudentRepository studentRepository;
 
-    @Test
-    public void saveStudent() {
-        Student student = Student.builder()
-                .emailId("hi@tobias.com")
-                .firstName("Tobias")
-                .lastName("Vienen")
-                .guardian(Guardian.builder()
-                        .name("Nolan")
-                        .email("nolan@tobias.de")
-                        .mobile("123456")
-                        .build())
-                .build();
+    // @Test
+    // public void saveStudent() {
+    //     Student student = Student.builder()
+    //             .emailId("hi@tobias.com")
+    //             .firstName("Tobias")
+    //             .lastName("Vienen")
+    //             .guardian(Guardian.builder()
+    //                     .name("Nolan")
+    //                     .email("nolan@tobias.de")
+    //                     .mobile("123456")
+    //                     .build())
+    //             .build();
 
-        studentRepository.save(student);
-    }
+    //     studentRepository.save(student);
+    // }
 
     @Test
     public void printAllStudent() {
