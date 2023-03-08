@@ -20,7 +20,7 @@ public class StudentRepositoryTest {
     @Test
     public void saveStudent() {
         Student student = Student.builder()
-                .emailId("another@tobias.com")
+                .emailId("hi@tobias.com")
                 .firstName("Tobias")
                 .lastName("Vienen")
                 .guardian(Guardian.builder()
@@ -73,5 +73,19 @@ public class StudentRepositoryTest {
         List<Student> studentList = studentRepository.findByGuardianName("Nolan");
 
         studentList.forEach(student -> log.info("student = " + student));
+    }
+
+    @Test
+    public void printGetStudentFirstNameByEmailAddress() {
+        String firstNameOfStudent = studentRepository.getStudentFirstNameByEmailAddress("hello@tobias.com");
+
+        log.info("first name of student = " + firstNameOfStudent);
+    }
+
+    @Test
+    public void printGetStudentByEmailAddress() {
+        Student student = studentRepository.getStudentByEmailAddress("hello@tobias.com");
+
+        log.info("student = " + student);
     }
 }

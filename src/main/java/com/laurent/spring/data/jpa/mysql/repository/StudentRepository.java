@@ -1,6 +1,8 @@
 package com.laurent.spring.data.jpa.mysql.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,6 +21,13 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
 
     public List<Student> findByFirstNameAndLastName(String firstName, String lastName);
 
-    // TODO: 57:36 / 2:20:13
+    @Query("select s.firstName from Student s where s.emailId = ?1")
+    public String getStudentFirstNameByEmailAddress(String emailId);
+
+    @Query(
+     value = "SELECT * FROM tbl_student s where s.email_address = :emailId",
+     nativeQuery = true   
+    )
+    public Student getStudentByEmailAddress(@Param("emailId") String emailId);
 
 }
