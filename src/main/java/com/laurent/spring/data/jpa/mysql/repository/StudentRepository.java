@@ -1,11 +1,12 @@
 package com.laurent.spring.data.jpa.mysql.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import com.laurent.spring.data.jpa.mysql.entity.Student;
 
 @Repository
@@ -29,7 +30,5 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
      nativeQuery = true   
     )
     public Student getStudentByEmailAddress(@Param("emailId") String emailId);
-
-    // TODO: 1:09:58 
 
 }
