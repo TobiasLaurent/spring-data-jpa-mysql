@@ -1,11 +1,13 @@
 package com.laurent.spring.data.jpa.mysql.repository;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.laurent.spring.data.jpa.mysql.entity.Guardian;
 // import com.laurent.spring.data.jpa.mysql.entity.Guardian;
 import com.laurent.spring.data.jpa.mysql.entity.Student;
 
@@ -18,21 +20,23 @@ public class StudentRepositoryTest {
     @Autowired
     private StudentRepository studentRepository;
 
-    // @Test
-    // public void saveStudent() {
-    //     Student student = Student.builder()
-    //             .emailId("hi@tobias.com")
-    //             .firstName("Tobias")
-    //             .lastName("Vienen")
-    //             .guardian(Guardian.builder()
-    //                     .name("Nolan")
-    //                     .email("nolan@tobias.de")
-    //                     .mobile("123456")
-    //                     .build())
-    //             .build();
+    @Test
+    public void saveStudent() {
+        Random rand = new Random();
+        var randomNumber = rand.nextInt();
+        Student student = Student.builder()
+                .emailId("hi@tobias.com")
+                .firstName("Tobias" + randomNumber)
+                .lastName("Mueller")
+                .guardian(Guardian.builder()
+                        .name("Nolan" + randomNumber)
+                        .email("nolan@tobias.de")
+                        .mobile("123456")
+                        .build())
+                .build();
 
-    //     studentRepository.save(student);
-    // }
+        studentRepository.save(student);
+    }
 
     @Test
     public void printAllStudent() {
